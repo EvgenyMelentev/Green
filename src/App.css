@@ -1,38 +1,319 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+.App{
+  height: 100vh;
+  background-color: rgb(223,223,220);
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.App:before {
+  content: "";
+  display: block;
+  height: 150px;
+  position: absolute;
+  top: 0;
+  background-color:rgb(0,168,132);
+  width: 100%;
   }
+.main_screen{
+  margin: 0 auto;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color:antiquewhite;
+  /* Можно удалить в последствии */
+  width: calc(100% - 38px);
+  height: calc(100% - 38px);
+  top: 19px;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+}
+.left_bar{
+  height: 100%;
+  background-color:aqua;
+}
+.right_bar{
+  background-color:rgb(239,234,226);
+  height: 100%;
+}
+.header{
+  width: 100%;
+  display: flex;
+  background-color:rgb(240,242,245);
+  padding: 10px 16px;
+  justify-content: start;
+  align-items:center;
+  height: 60px;
+  border-right: rgb(206,208,209) 1px solid;
+}
+.header_right{
+  width: 100%;
+  display: flex;
+  background-color:rgb(240,242,245);
+  padding: 10px 16px;
+  justify-content: start;
+  align-items:center;
+  height: 60px;
+}
+.account_image svg{
+  width: 40px;
+  height: 40px;
+}
+.contacts{
+  height: calc(100% - 60px);
+  width: 100%;
+  background-color: #FFFFFF;
+  overflow-y: auto;
+  
+  position: relative;
+}
+.user_contact{
+  width: 100%;
+  height: 70px;
+  display: flex;
+  background-color:#FFFFFF;
+  padding: 0 0 0 16px;
+  justify-content: start;
+  align-items:center;
+
+}
+.user_contact:hover{
+cursor: pointer;
+
+}
+.user_contact input{
+  width: 80%;
+  height: 100%;
+  border:none;
+  outline: none;
+  background-color:rgb(240,242,245);
+  border-radius: 0 10px 10px 0;
+}
+.user_contact input::-webkit-outer-spin-button,
+.user_contact input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.user_contact_container{
+  display: flex;
+  align-items:center;
+  height: 70%;
+  width: 80%;
+  background-color:rgb(240,242,245);
+  border-radius: 10px;
+}
+.user_contact_button{
+  width: 20%;
+  height: 100%;
+  border:none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  border-radius: 10px 0 0 10px;
+}
+.user_contact_button:hover{
+  cursor: pointer;
+}
+.user_contact_button span{
+  height: 40px;
+  width: 40px;
+}
+.contact_enum{
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-grow: 1;
+  border-bottom: rgb(206,208,209) 1px solid ;
+}
+.user_contact svg{
+  width: 40px;
+  height: 40px;
+}
+.contacts_container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent; 
+  
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(206,208,209); 
+  
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(161, 163, 164); 
+}
+.contact_info{
+  padding-left: 16px;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+ height: calc(100% - 60px);
+ justify-content: end;
+  align-items:center;
+}
+.message_bar{
+  position: relative;
+  padding: 5px 6px;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color:rgb(240,242,245);
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+}
+.send_button{
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items:center;
+  margin-right: 20px;
+}
+.send_button:hover{
+  cursor: pointer;
+}
+.message_placeholder{
+  width: 80%;
+  height: 90%;
+  margin-right: 30px;
+}
+.message_placeholder input{
+width: 100%;
+height: 100%;
+border-radius: 8px;
+border:none;
+outline: none;
+font-size: 15px;
+padding-left: 20px;
+}
+.message{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.row{
+  min-height: 35px;
+  margin-bottom: 10px;
+  display: flex;
+  z-index: 100;
+  padding: 0 16px;
+}
+.row_text{
+  height: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items:center;
+  
+  z-index: 100;
+}
+.row_text p{
+  padding: 6px 10px;
+  z-index: 100;
+  border-radius:7.5px;
+}
+.my_message{
+  flex-direction: row-reverse;
+  justify-content: end;
+  z-index: 100;
+}
+.my_message p{
+  flex-direction: row-reverse;
+  background-color: rgb(217,253,211);
+  justify-content: end;
+  position: relative;
+  z-index: 100;
+}
+.my_message p span{
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  font-size: 0.8em;
+}
+
+.incoming_message p{
+  border:none;
+  background-color: #FFFFFF;
+  position: relative;
+}
+.incoming_message p span{
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  font-size: 0.8em;
+}
+.message{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+}
+.messages_income{
+
+  position: absolute; 
+  bottom:0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+
+}
+.active{
+  background-color: rgb(240,242,245);
+}
+.modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+ 
+}
+.modalContent{
+  padding: 25px;
+  background: white;
+  border-radius: 16px;
+  min-width: 250px;
+}
+.modal.active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalInputs{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}  
+.modalItems{
+  margin-top: 10px;
+}
+
+.modalInput{
+  height: 30px;
+  padding-left: 10px;
 }
